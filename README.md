@@ -1,4 +1,4 @@
-# Faasd Worker Dockerfile
+# Faasd Worker Buildfiles
 
 This repo is solely used for containing public build files (Dockerfile and deployment.yaml) that are read by GCP Cloud Build to build and deploy the faasd-worker images to GKE.
 
@@ -20,7 +20,7 @@ We can't use a Dockerfile deployment alone b/c GCP requires the Dockerfile is in
 
 We can't use a cloudbuild.yaml in the parent repo b/c the parent repo is not the repo that triggers the build
 
-We could use buildpack (and some research was done to actually get a working example) but this is currently more complex.  However, this is a good option for the future because it is both cloud agnostic and scalable
+We could use buildpack (and some research was done to actually get a [working example](https://github.com/micro-quant/faasd-worker-buildpack)) but this is currently more complex.  However, this is a good option for the future because it is both cloud agnostic and scalable
 
 ## Other ways to automate the build and deployment of an app to GKE using CloudBuild
 
