@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: faasd-worker-server
+spec:
+  selector:
+    matchLabels:
+      app: faasd-worker-server
+  template:
+    metadata:
+      labels:
+        app: faasd-worker-server
+    spec:
+      containers:
+      - name: faasd-worker-server
+        image: @IMAGE_NAME@
+        ports:
+        - containerPort: 5051
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: faasd-worker-ilb
+  annotations:
+    networking.gke.io/load-balancer-type: "Internal"
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.0.5
+  externalTrafficPolicy: Cluster
+  selector:
+    app: faasd-worker-server
+  ports:
+  - name: grpc5051
+    port: 5051
+    targetPort: 5051
+    protocol: TCP
