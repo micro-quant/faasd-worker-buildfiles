@@ -83,3 +83,17 @@ substitutions:
   _IMAGE_VERSION: '${COMMIT_SHA}'
 
 ```
+
+## References
+
+This is the old cloudbuild.yaml we used to use when we used a custom cloud builder
+
+```yaml
+steps:
+  - name: >-
+	  europe-west1-docker.pkg.dev/mqplatform/external/faasd-worker:fcbefbe8289d3fb8eddd371fd50c297b9a6b41f8
+	args:
+	  - $PROJECT_ID
+	  - 'europe-west1-docker.pkg.dev/$PROJECT_ID/artifacts/$REPO_NAME:$COMMIT_SHA'
+	  - $REPO_NAME
+```
