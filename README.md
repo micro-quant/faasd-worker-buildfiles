@@ -33,7 +33,7 @@ We could use buildpack (and some research was done to actually get a [working ex
 
 This config is the cloudbuild config used to build and deploy the faasd-worker images to GKE.
 
-There is 1 _major_ issue with this because the kube cluster is private so a default builder cannot access it.  To get around it, we could create a private pool (see References at the bottom) but this costs (by my best estimates) an additional $2/day due to the machine, and vpc costs - but more imporantly; [I couldnt get this to work](https://github.com/micro-quant/faasd-worker-buildfiles/build_to_private_gke.sh)...  So instead, the below cloudbuild.yaml has a hack which whitelists the IP of the machine it is run on - this eventually needs to be replaced, probably with the private pool VPC method.
+There is 1 _major_ issue with this because the kube cluster is private so a default builder cannot access it.  To get around it, we could create a private pool (see References at the bottom) but this costs (by my best estimates) an additional $2/day due to the machine, and vpc costs - but more imporantly; [I couldnt get this to work](https://github.com/micro-quant/faasd-worker-buildfiles/blob/main/build_to_private_gke.sh)...  So instead, the below cloudbuild.yaml has a hack which whitelists the IP of the machine it is run on - this eventually needs to be replaced, probably with the private pool VPC method.
 
 ```yaml
 steps:
