@@ -1,4 +1,4 @@
-FROM europe-west1-docker.pkg.dev/mqplatform/external/faasd-worker:0f3c9256d085d90fe32799aa6580bd129f65b15e as base
+FROM europe-west1-docker.pkg.dev/mqplatform/external/faasd-worker:0df064de6ca06b0979aecc2c7509a2681bae221e as base
 WORKDIR /server
 
 ARG APP_NAME
