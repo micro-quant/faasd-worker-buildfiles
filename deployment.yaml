@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: faasd-worker-server
+  name: @REPO_NAME@
 spec:
   selector:
     matchLabels:
-      app: faasd-worker-server
+      app: @REPO_NAME@
   template:
     metadata:
       labels:
-        app: faasd-worker-server
+        app: @REPO_NAME@
     spec:
       containers:
-      - name: faasd-worker-server
+      - name: @REPO_NAME@
         image: @IMAGE_NAME@
         ports:
         - containerPort: 5051
@@ -28,7 +28,7 @@ spec:
   loadBalancerIP: 192.168.0.5
   externalTrafficPolicy: Cluster
   selector:
-    app: faasd-worker-server
+    app: @REPO_NAME@
   ports:
   - name: grpc5051
     port: 5051
