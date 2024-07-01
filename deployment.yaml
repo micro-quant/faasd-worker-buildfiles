@@ -20,12 +20,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: faasd-worker-ilb
+  name: @REPO_NAME@-ilb
   annotations:
     networking.gke.io/load-balancer-type: "Internal"
 spec:
   type: LoadBalancer
-  loadBalancerIP: 192.168.0.5
+  loadBalancerIP: @ILB_IP@
   externalTrafficPolicy: Cluster
   selector:
     app: @REPO_NAME@
