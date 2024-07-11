@@ -34,3 +34,16 @@ spec:
     port: 5051
     targetPort: 5051
     protocol: TCP
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: fabric8-rbac # This is so Faasd-Worker can access the control plane to retrieve the artifact-id of the pod its running on
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
